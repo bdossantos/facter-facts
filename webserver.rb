@@ -13,6 +13,6 @@ Facter.add('https') do
 end
 
 ['nginx', 'apache2', 'lighttpd'].each do |srv|
-  Facter::Util::Resolution.exec("which #{srv} &>/dev/null")
-  Facter.add(srv) { setcode { 'true' } } if $?.exitstatus == 0
+  `hash #{srv} 2>/dev/null`
+  Facter.add(srv) { setcode { 'true' } } if $?.exitstatus === 0
 end
