@@ -1,6 +1,6 @@
 require 'facter'
 
-Facter.add('php-fpm') do
+Facter.add('php_fpm') do
   confine :kernel => 'Linux'
 
   `hash php5-fpm 2>/dev/null`
